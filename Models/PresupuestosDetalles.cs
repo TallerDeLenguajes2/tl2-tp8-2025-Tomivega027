@@ -1,4 +1,5 @@
 using miproyecto;
+namespace miproyecto.models;
 public class PresupuestosDetalles
 {
     public Productos producto { get; set; }

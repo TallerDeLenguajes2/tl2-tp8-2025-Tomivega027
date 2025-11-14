@@ -1,152 +1,127 @@
-using System.ComponentModel.Design;
-using System.Security.Cryptography.X509Certificates;
-using Microsoft.VisualBasic;
 using Microsoft.Data.Sqlite;
-using miproyecto;
-using System.Linq.Expressions;
+using miproyecto.models;
+using System;
+using System.Collections.Generic;
+namespace miproyecto.repository;
 public class ProductoRepository
 {
-    private string cadenaconexion = "Data Source =Tienda.db"; // nuestra ruta de la db 
-    List<Productos> listadoProductos = new List<Productos>();
+    private string cadenaConexion = "Data Source=Tienda.db";
 
-    public  List<Productos> GetAll()
+    // -------------------------------------------------------
+    // GET ALL
+    // -------------------------------------------------------
+    public List<Productos> GetAll()
     {
-        string query = "SELECT * FROM productos"; //consulta que nos trae todos los productos de la tabla productos
-        var connection = new SqliteConnection(cadenaconexion); // lo que nos permite conectarnos a la db
-        connection.Open(); // nos permite realizar las consultas 
-        var command = new SqliteCommand(query, connection); // prepara la consulta para ejecutar la db
-        
-        //ExecuteReader() ejecuta la consulta SELECT y devuelve un lector de resultados (SqliteDataReader).
-        using SqliteDataReader reader = command.ExecuteReader(); 
+        var productos = new List<Productos>();
 
-        while (reader.Read())   //recorre fila por fila los resultados.
+        string query = "SELECT * FROM Productos";
+
+        using var connection = new SqliteConnection(cadenaConexion);
+        connection.Open();
+
+        using var command = new SqliteCommand(query, connection);
+        using var reader = command.ExecuteReader();
+
+        while (reader.Read())
         {
-            var producto = new Productos
+            productos.Add(new Productos
             {
-                idProducto = Convert.ToInt32(reader["idproducto"]),
+                idProducto = Convert.ToInt32(reader["idProducto"]),
                 descripcion = reader["descripcion"].ToString(),
-                precio = Convert.ToInt32(reader["precio"])
-            };
-            listadoProductos.Add(producto);
+                precio = Convert.ToDouble(reader["precio"])
+            });
         }
-        return listadoProductos;
+
+        return productos;
     }
 
-
+    // -------------------------------------------------------
+    // CREATE
+    // -------------------------------------------------------
     public Productos CrearProducto(Productos prod)
     {
-        using (var connection = new SqliteConnection(cadenaconexion))
-        {
-            connection.Open();
-            var command = new SqliteCommand(
-                "INSERT INTO Productos(Descripcion , Precio) VALUES ( @descripcion, @precio)",
-                connection
-                );
+        using var connection = new SqliteConnection(cadenaConexion);
+        connection.Open();
 
-            command.Parameters.AddWithValue("@descripcion", prod.descripcion);
-            command.Parameters.AddWithValue("@precio", prod.precio);
+        var command = new SqliteCommand(
+            @"INSERT INTO Productos (descripcion, precio) 
+              VALUES (@descripcion, @precio); 
+              SELECT last_insert_rowid();",
+            connection);
 
+        command.Parameters.AddWithValue("@descripcion", prod.descripcion);
+        command.Parameters.AddWithValue("@precio", prod.precio);
 
-            command.ExecuteNonQuery();
-        }
+        prod.idProducto = Convert.ToInt32(command.ExecuteScalar());
         return prod;
     }
 
-    public Productos modificarProducto(int id, Productos prod)
+    // -------------------------------------------------------
+    // UPDATE
+    // -------------------------------------------------------
+    public Productos ModificarProducto(int id, Productos prod)
     {
-        using (var connection = new SqliteConnection(cadenaconexion))
-        {
-            connection.Open();
-            var command = new SqliteCommand(
-                "UPDATE Productos SET Descripcion = @descripcion , Precio = @precio WHERE idProducto = @id ",
-                connection
-                );
-            command.Parameters.AddWithValue("@descripcion", prod.descripcion);
-            command.Parameters.AddWithValue("@precio", prod.precio);
-            command.Parameters.AddWithValue("@id", id);
-            command.ExecuteNonQuery();
-        }
+        using var connection = new SqliteConnection(cadenaConexion);
+        connection.Open();
+
+        var command = new SqliteCommand(
+            @"UPDATE Productos 
+              SET descripcion = @descripcion, precio = @precio 
+              WHERE idProducto = @id",
+            connection);
+
+        command.Parameters.AddWithValue("@descripcion", prod.descripcion);
+        command.Parameters.AddWithValue("@precio", prod.precio);
+        command.Parameters.AddWithValue("@id", id);
+
+        command.ExecuteNonQuery();
         return prod;
-
     }
 
-    public List<Productos> ListarProductos()
+    // -------------------------------------------------------
+    // GET BY ID
+    // -------------------------------------------------------
+    public Productos DetallesProducto(int id)
     {
-        return listadoProductos;
-    }
-
-public Productos DetallesProducto(int id)
-{
-    using (var connection = new SqliteConnection(cadenaconexion))
-    {
+        using var connection = new SqliteConnection(cadenaConexion);
         connection.Open();
 
         var command = new SqliteCommand(
             "SELECT * FROM Productos WHERE idProducto = @id",
-            connection
-        );
+            connection);
 
         command.Parameters.AddWithValue("@id", id);
 
-        using SqliteDataReader reader = command.ExecuteReader();
-
-        if (reader.Read()) // si encontró un registro
+        using var reader = command.ExecuteReader();
+        if (reader.Read())
         {
-            var producto = new Productos
+            return new Productos
             {
                 idProducto = Convert.ToInt32(reader["idProducto"]),
                 descripcion = reader["descripcion"].ToString(),
                 precio = Convert.ToInt32(reader["precio"])
             };
-
-            return producto;
         }
+
+        return null;
     }
 
-    // si no encontró nada, devuelve null
-    return null;
-}
-
-
-public Productos EliminarProducto(int id)
-{
-    Productos productoEliminado = null;
-
-    using (var connection = new SqliteConnection(cadenaconexion))
+    // -------------------------------------------------------
+    // DELETE
+    // -------------------------------------------------------
+    public Productos EliminarProducto(int id)
     {
+        Productos eliminado = DetallesProducto(id);
+        if (eliminado == null)
+            return null;
+
+        using var connection = new SqliteConnection(cadenaConexion);
         connection.Open();
 
-        // Primero obtenemos el producto (para poder devolverlo después)
-        var selectCommand = new SqliteCommand("SELECT * FROM Productos WHERE idProducto = @id", connection);
-        selectCommand.Parameters.AddWithValue("@id", id);
+        var cmd = new SqliteCommand("DELETE FROM Productos WHERE idProducto = @id", connection);
+        cmd.Parameters.AddWithValue("@id", id);
+        cmd.ExecuteNonQuery();
 
-        using (var reader = selectCommand.ExecuteReader())
-        {
-            if (reader.Read())
-            {
-                productoEliminado = new Productos
-                {
-                    idProducto = Convert.ToInt32(reader["idProducto"]),
-                    descripcion = reader["descripcion"].ToString(),
-                    precio = Convert.ToInt32(reader["precio"])
-                };
-            }
-            else
-            {
-                // Si no existe, salimos del método devolviendo null
-                return null;
-            }
-        }
-
-        // Ahora eliminamos el producto
-        var deleteCommand = new SqliteCommand("DELETE FROM Productos WHERE idProducto = @id", connection);
-        deleteCommand.Parameters.AddWithValue("@id", id);
-        deleteCommand.ExecuteNonQuery();
+        return eliminado;
     }
-
-    // Devolvemos el producto que acabamos de borrar
-    return productoEliminado;
-}
-
-
 }

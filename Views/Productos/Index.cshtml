@@ -1,6 +1,27 @@
- 
-        @foreach(var item in Model)
+@model List<miproyecto.models.Productos>
+
+@{
+    ViewData["Title"] = "Lista de Productos";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var producto in Model)
         {
-            
+            <tr>
+                <td>@producto.idProducto</td>
+                <td>@producto.descripcion</td>
+                <td>@producto.precio</td>
+            </tr>
         }
-    </table>
+    </tbody>
+</table>

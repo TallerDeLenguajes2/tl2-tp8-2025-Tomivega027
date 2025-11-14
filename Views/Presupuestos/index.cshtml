@@ -1,0 +1,33 @@
+@model List<miproyecto.models.Presupuestos>
+
+<h2 class="mb-3">Listado de Presupuestos</h2>
+
+<a asp-action="Create" class="btn btn-primary mb-3">Crear Presupuesto</a>
+
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Destinatario</th>
+            <th>Fecha</th>
+            <th>Monto</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.idPresupuestos</td>
+                <td>@p.nombreDestinatario</td>
+                <td>@p.fechaCreacion.ToShortDateString</td>
+                <td>@p.MontoPresupuesto().ToString("C")</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@p.idPresupuestos" class="btn btn-info btn-sm">Ver</a>
+                    <a asp-action="Edit" asp-route-id="@p.idPresupuestos" class="btn btn-warning btn-sm">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@p.idPresupuestos" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

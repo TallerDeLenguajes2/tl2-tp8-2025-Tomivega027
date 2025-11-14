@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\tl2-tp8-2025-Tomivega027.props" />
+</Project>

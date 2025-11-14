@@ -1,9 +1,9 @@
-namespace miproyecto;
+namespace miproyecto.models;
 public class Productos
 {
     public int idProducto { get; set; }
     public string descripcion { get; set; }
-    public int precio { get; set; }
+    public double precio { get; set; }
 
     public Productos() { } // Constructor vacío necesario para ADO.NET o serialización JSON
 
