@@ -59,7 +59,7 @@ public class ProductoRepository
     // -------------------------------------------------------
     // UPDATE
     // -------------------------------------------------------
-    public Productos ModificarProducto(int id, Productos prod)
+    public Productos ModificarProducto( Productos prod)
     {
         using var connection = new SqliteConnection(cadenaConexion);
         connection.Open();
@@ -72,7 +72,7 @@ public class ProductoRepository
 
         command.Parameters.AddWithValue("@descripcion", prod.descripcion);
         command.Parameters.AddWithValue("@precio", prod.precio);
-        command.Parameters.AddWithValue("@id", id);
+        command.Parameters.AddWithValue("@id", prod.idProducto);
 
         command.ExecuteNonQuery();
         return prod;
@@ -111,6 +111,7 @@ public class ProductoRepository
     // -------------------------------------------------------
     public Productos EliminarProducto(int id)
     {
+        //atrapa u obtiene el producto buscado por id
         Productos eliminado = DetallesProducto(id);
         if (eliminado == null)
             return null;

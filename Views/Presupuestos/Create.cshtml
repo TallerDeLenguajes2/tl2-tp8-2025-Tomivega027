@@ -1,0 +1,15 @@
+@model miproyecto.models.Presupuestos;
+
+<h2>Crear Presupuesto</h2>
+
+<form action="Create" method="post">
+    <div>
+        <label for="">Destinatario</label>
+        <input type="text" asp-for="nombreDestinatario" class="form-control"/>
+    </div>
+    <div>
+        <label for="">Fecha</label>
+        <input type="date" asp-for="fechaCreacion" class="form-control"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>

@@ -1,0 +1,39 @@
+@model miproyecto.models.Presupuestos
+
+<div class="container mt-4">
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Editar Presupuesto</h4>
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Edit" method="post">
+
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                <input type="hidden" asp-for="idPresupuestos" />
+
+                <div class="mb-3">
+                    <label asp-for="nombreDestinatario" class="form-label fw-bold"></label>
+                    <input asp-for="nombreDestinatario" class="form-control" placeholder="Ingrese el nombre del destinatario" />
+                    <span asp-validation-for="nombreDestinatario" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="fechaCreacion" class="form-label fw-bold"></label>
+                    <input asp-for="fechaCreacion" class="form-control" type="date" />
+                    <span asp-validation-for="fechaCreacion" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-end gap-2 mt-3">
+                    <button type="submit" class="btn btn-success">Guardar Cambios</button>
+                    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<partial name="_ValidationScriptsPartial" />

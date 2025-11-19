@@ -1,0 +1,25 @@
+@model miproyecto.models.Presupuestos;
+<h2>Eliminar Presupuesto:@Model.idPresupuestos</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Destinatario</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.nombreDestinatario</td>
+            <td>@Model.fechaCreacion.ToShortDateString()</td>
+        </tr>
+    </tbody>
+</table>
+<div>
+    <form method="post" asp-action="DeletePresupuesto">
+        <input type="hidden" name="id" value="@Model.idPresupuestos" />
+
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

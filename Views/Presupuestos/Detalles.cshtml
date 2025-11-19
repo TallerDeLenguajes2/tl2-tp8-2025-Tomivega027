@@ -1,0 +1,74 @@
+@model miproyecto.models.Presupuestos;
+
+<h2>Presupuesto #@Model.idPresupuestos</h2>
+
+<!-- Datos del presupuesto -->
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Destinatario</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.nombreDestinatario</td>
+            <td>@Model.fechaCreacion.ToShortDateString()</td>
+        </tr>
+    </tbody>
+</table>
+<a class="nav-link text-dark btn btn-primary" asp-controller="Presupuestos" asp-action="Index">volver a Presupuestos</a>
+<hr />
+
+<h3>Agregar productos</h3>
+
+<form method="post" asp-controller="Presupuestos" asp-action="Detalles">
+    <input type="hidden" name="id" value="@Model.idPresupuestos" />
+
+    <div class="mb-3">
+        <label>ID Producto</label>
+        <input type="number" class="form-control" name="idProducto" />
+    </div>
+
+    <div class="mb-3">
+        <label>Cantidad</label>
+        <input type="number" class="form-control" name="cantidad" value="1" min="1" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Agregar</button>
+</form>
+
+<hr />
+
+<h3>Productos agregados</h3>
+
+@if (Model.detalles == null || !Model.detalles.Any())
+{
+    <p class="text-danger">Todavía no hay productos cargados.</p>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.detalles)
+            {
+                <tr>
+                    <td>@item.producto?.descripcion</td>
+                    <td>@item.cantidad</td>
+                    <td>@item.producto?.precio</td>
+                    <td>@(item.producto?.precio * item.cantidad)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+}
+

@@ -1,0 +1,34 @@
+@model miproyecto.models.Productos
+
+@{
+    ViewData["Title"] = "Nuevo Producto";
+}
+
+<h2 class="mb-4 text-center">@ViewData["Title"]</h2>
+
+<div class="card shadow-sm p-4 mx-auto" style="max-width: 550px;">
+    <form asp-action="Create" method="post">
+        
+        <div class="mb-3">
+            <label asp-for="descripcion" class="form-label fw-bold">Descripción</label>
+            <input asp-for="descripcion" class="form-control" placeholder="Ej: Lápiz, Cuaderno, etc." />
+            <span asp-validation-for="descripcion" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="precio" class="form-label fw-bold">Precio</label>
+            <input asp-for="precio" class="form-control" placeholder="Ej: 1500" />
+            <span asp-validation-for="precio" class="text-danger"></span>
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+            <a asp-action="Index" class="btn btn-secondary">
+                Volver
+            </a>
+
+            <button type="submit" class="btn btn-primary px-4">
+                Guardar
+            </button>
+        </div>
+    </form>
+</div>

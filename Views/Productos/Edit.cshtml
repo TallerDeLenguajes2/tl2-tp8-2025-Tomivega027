@@ -1,0 +1,28 @@
+@model miproyecto.models.Productos
+
+<h2 class="mb-4">Editar Producto</h2>
+
+<form asp-action="Edit" method="post" class="form-horizontal">
+    <input type="hidden" asp-for="idProducto" />
+
+    <div class="mb-3">
+        <label asp-for="descripcion" class="form-label">Descripción</label>
+        <input asp-for="descripcion" class="form-control" />
+        <span asp-validation-for="descripcion" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="precio" class="form-label">Precio</label>
+        <input asp-for="precio" class="form-control" />
+        <span asp-validation-for="precio" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a asp-action="Index" class="btn btn-secondary ms-2">Cancelar</a>
+    </div>
+
+    <p class="text-muted">ID del Producto: @Model.idProducto</p>
+</form>
+
+<partial name="_ValidationScriptsPartial" />

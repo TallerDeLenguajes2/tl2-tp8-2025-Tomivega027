@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("tallertp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ba9422b5d86f49eb8cadadc3428581dfbbbc02ca")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8f18a6b2d9d2e9620d2d0be4cc2427fb777f1716")]
 [assembly: System.Reflection.AssemblyProductAttribute("tallertp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("tallertp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

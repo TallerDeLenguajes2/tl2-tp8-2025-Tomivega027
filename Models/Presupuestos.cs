@@ -25,7 +25,7 @@ public class Presupuestos
 
         foreach (var detalle in detalles)
         {
-            suma += detalle.producto.precio;
+            suma += detalle.producto.precio * detalle.cantidad;
         }
         return suma;
     }

@@ -9,47 +9,79 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = tallertp
 build_property.RootNamespace = tallertp
-build_property.ProjectDir = c:\tl2-tp8-2025-Tomivega027\
+build_property.ProjectDir = C:\tl2-tp8-2025-Tomivega027\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = c:\tl2-tp8-2025-Tomivega027
+build_property.MSBuildProjectDirectory = C:\tl2-tp8-2025-Tomivega027
 build_property._RazorSourceGeneratorDebug = 
 
-[c:/tl2-tp8-2025-Tomivega027/Views/Home/Index.cshtml]
+[C:/tl2-tp8-2025-Tomivega027/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/tl2-tp8-2025-Tomivega027/Views/Home/Privacy.cshtml]
+[C:/tl2-tp8-2025-Tomivega027/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/tl2-tp8-2025-Tomivega027/Views/Presupuestos/index.cshtml]
+[C:/tl2-tp8-2025-Tomivega027/Views/Presupuestos/AgregarProducto.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc3VwdWVzdG9zXEFncmVnYXJQcm9kdWN0by5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/tl2-tp8-2025-Tomivega027/Views/Presupuestos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc3VwdWVzdG9zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/tl2-tp8-2025-Tomivega027/Views/Presupuestos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc3VwdWVzdG9zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/tl2-tp8-2025-Tomivega027/Views/Presupuestos/Detalles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc3VwdWVzdG9zXERldGFsbGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/tl2-tp8-2025-Tomivega027/Views/Presupuestos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc3VwdWVzdG9zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/tl2-tp8-2025-Tomivega027/Views/Presupuestos/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc3VwdWVzdG9zXGluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/tl2-tp8-2025-Tomivega027/Views/Productos/Index.cshtml]
+[C:/tl2-tp8-2025-Tomivega027/Views/Productos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdG9zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/tl2-tp8-2025-Tomivega027/Views/Productos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdG9zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/tl2-tp8-2025-Tomivega027/Views/Productos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdG9zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/tl2-tp8-2025-Tomivega027/Views/Productos/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdG9zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/tl2-tp8-2025-Tomivega027/Views/Shared/Error.cshtml]
+[C:/tl2-tp8-2025-Tomivega027/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/tl2-tp8-2025-Tomivega027/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/tl2-tp8-2025-Tomivega027/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/tl2-tp8-2025-Tomivega027/Views/_ViewImports.cshtml]
+[C:/tl2-tp8-2025-Tomivega027/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/tl2-tp8-2025-Tomivega027/Views/_ViewStart.cshtml]
+[C:/tl2-tp8-2025-Tomivega027/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/tl2-tp8-2025-Tomivega027/Views/Shared/_Layout.cshtml]
+[C:/tl2-tp8-2025-Tomivega027/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-7888s3wa6e
